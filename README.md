@@ -11,7 +11,7 @@ Följ instruktionerna nedan för att komma igång.
 1. Klona projektet
 
 ```
-git clone https://github.com/EHBFEH24/JavaScript1-FreakyFashion.git freakyfashion
+git clone https://github.com/EVSFEH24P/JavaScript1-FreakyFashion.git freakyfashion
 ```
 
 2. Öppna projektet i Visual Studio Code
