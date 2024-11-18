@@ -34,13 +34,13 @@ loadProducts.addEventListener("click", (event) => {
 });
 
 function deleteProduct(id, tableRow){
-  fetch(("/admin/products/delete"), {
-    method: "POST",
+  fetch(("/admin/products"), {
+    method: "DELETE",
     body: new URLSearchParams({ id: id }),
   }).then(response => response.json())
   .then((data) => {
     if(data.success){
-      tableRow.classList.add("hidden")
+      tableRow.remove();
     }else{
       console.error(data.error)
       displayError(data.error)
