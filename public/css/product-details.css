@@ -1,0 +1,109 @@
+/* CSS för product details sidan */
+
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.descriptionContainer h2 {
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 1.5em;
+}
+
+.addBasket {
+    width: 100%;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    background-color: #151515;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+}
+
+.addBasket:hover{
+    background-color: #F3796F;
+}
+
+#carouselExample{
+    display: none;
+    margin-top: 3rem;
+}
+
+#carouselExample > h2{
+    text-align: center;
+}
+
+.carouselArticle{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    justify-content: center;
+    padding: 1rem 13vw;
+    gap: 0.5rem;
+}
+
+.carouselArticle img{
+    height: 100%;
+}
+
+.carouselDescription > *{
+    color: white;
+}
+
+.carouselDescription h3{
+    text-transform: uppercase;
+}
+
+.car1{
+    background-image: linear-gradient(to right, #baa866,#d89217);
+}
+
+.car2{
+    background-image: linear-gradient(to right, #d89217, #dbad5d);
+}
+
+.car3{
+    background-image: linear-gradient(to right, #dbad5d,#baa866);
+}
+
+
+
+@media (min-width: 641px){
+    .article{
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .article img{
+        width: 50%;
+    }
+
+    #carouselExample{
+        display: block;
+    }
+}
+
+@media (min-width: 1025px) {
+    .descriptionContainer, .carouselDescription > *{
+        font-size: 2em;
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <script src="/admin/products/js/client.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Administration</h1>
+    </header>
+    <main>
+        <div class="headRow">
+            <h2>Produkter</h2>
+            <div class="buttonContainer">
+                <button id="loadProducts" class="productButtons">Ladda Produkter</button>
+                <a href="/admin/products/new" class="productButtons">Ny produkt</a>
+            </div>
+        </div>
+        <table id="table">
+            <thead>
+                <tr>
+                    <td>Namn</td>
+                    <td>SKU</td>
+                    <td>Pris</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+            <p class="error"></p>
+    </main>
+    <aside>
+        <a href="#">Produkter</a>
+    </aside>
+</body>
+
+</html>

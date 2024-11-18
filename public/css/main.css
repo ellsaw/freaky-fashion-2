@@ -1,0 +1,303 @@
+/* IMPORT AV BOOTSTRAP ICONS OCH FONT */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+
+
+/* CSS RESET + TEXTINSTÄLLNINGAR */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    color: #151515;
+}
+
+/* GENERELL CSS */
+body{
+    font-family: "DM Sans", sans-serif;
+    font-size: 2rem
+    
+}
+
+header, main{
+    max-width: 1240px;
+    margin: auto;
+}
+
+a{
+    text-decoration: none; 
+}
+
+a:active{
+    color: #FFE02B; 
+}
+
+a:visited{
+    color: #151515 
+}
+
+.freckle_face{
+    font-family: "Freckle Face", system-ui;
+}
+
+/* Jag kör mobile first så detta är för <640px */
+/* HEADER */
+
+header{
+    padding: 1rem 1rem 0;
+}
+
+.upperHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.upperHeader a{
+    height: 100%;
+    width: 100%;
+}
+
+.upperHeader img{
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 640px){
+    .checkout-favorites{
+        position: fixed;
+        display: flex;
+        width: 11rem;
+        height: 4rem;
+        background-color: white;
+        bottom: 20px;
+        box-shadow: 0 0.31rem 0.63rem 0.06rem #33333355;
+        border-radius: 20px;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 1000;
+    }
+    
+    .checkout-favorites a{
+        display: flex;
+        align-items: center;
+        padding: 0.6rem;
+        font-size: 1em; 
+    }
+} /* Denna ska enbart finnas på mobil så jag la det flygande navigeringsfönstret i en max width query för att se till att ingen CSS följer med i större skärmlägen. */
+
+
+.search_bar{
+    display: flex;
+    height: 5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    z-index: 1000;
+    /* border: rgba(51, 51, 51, 0.2) 2px solid; */
+    background-color: white; 
+    width: 100%;
+}
+
+.search_bar > input {
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    border: 0;
+    padding: 0.5rem;
+}
+
+.search_bar > button{
+    width: 80px;
+    height: 100%;
+    font-size: 1em;
+    border: 0;
+    background-color: white;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    position: relative;
+    left: -5px;
+}
+
+.search_bar > button:hover{
+    cursor: pointer;
+}
+
+.lower_nav ul{
+    list-style-type: none;
+    font-size: 1em;
+    padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.lower_nav ul a{
+    color: #151515;
+}
+
+/* FOOTER */
+
+.benefitList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    font-size: 1em;
+    padding: 2rem 0 0 0;
+    max-width: 100%;
+}
+
+.benefitList li{
+    padding: 1rem;
+    display: inline-block;
+}
+
+.benefitList li .bi{
+    font-size: 2em;
+}
+
+.benefitList li p{
+    position: relative;
+    display: inline;
+    padding-left: 1rem;
+    margin: 0;
+    bottom: 15px;    
+}
+
+.accordion-button{
+    font-size: 1em;
+}
+
+.accordion-body{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75em;
+    line-height: 2;
+}
+
+.lowerFooter{
+    width: 100%;
+    height: 10rem;
+}
+
+.lowerFooter p{
+    padding: 0.5rem;
+    font-size: 0.5em;
+    
+}
+
+.upperFooter{
+    display: none;
+    padding-top: 1rem;
+    background-color: #202020;
+    justify-content: space-evenly;
+
+}
+
+.upperFooter ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.upperFooter h2{
+    color: white;
+}
+
+.upperFooter ul li a{
+    color: white;
+}
+
+/* MEDIA */
+
+@media (min-width: 641px){
+    body{
+        font-size: 1.5rem;
+    }
+    /* HEADER */
+    .lower_nav ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        font-size: 1.25em;
+    }
+    header{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .upperHeader a{
+        height: 100%;
+        width: 50%;
+    }
+
+    .checkout-favorites{
+        font-size: 2em;
+    }
+
+    .bi-house-fill, .bi-house{
+        display: none;
+    }
+
+    .search_bar > input {
+        font-size: 1.5em;
+    }
+
+    .search_bar > button{
+        font-size: 1.5em;
+    }
+
+    /* ACCORDION OCH FOOTER */
+
+    .lowerFooter{
+        height: 0;
+    }
+
+    .lowerFooter p{
+        background-color: #202020;
+        color: white;
+    }
+
+    .accordion-item{
+        display: none;
+    }
+
+    .upperFooter{
+        display: flex;
+        font-size: 1em;
+    }
+
+    .upperFooter ul li a{
+        font-size: 0.75em;
+    }
+}
+
+@media (min-width: 1025px){
+    body{
+        font-size: 1rem;
+    }
+
+    .upperHeader a{
+        height: 100%;
+        width: 30%;
+    }
+
+    .search_bar > input {
+        font-size: 2em;
+    }
+
+    .search_bar > button{
+        font-size: 2em;
+    }
+
+    .lower_nav ul{
+        font-size: 2em;
+    }
+    .checkout-favorites{
+        font-size: 3em;
+    }
+
+}

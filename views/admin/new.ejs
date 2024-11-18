@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <link rel="stylesheet" href="/admin/css/main.css">
+    <script src="/admin/new/js/client.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Administration</h1>
+    </header>
+    <main>
+        <h2>Ny produkt</h2>
+        <form id="addProduct">
+            <div class="formContainer">
+                <label for="productName">Namn</label>
+                <input type="text" name="productName" id="productName" required maxlength="25" placeholder="Ange namn">
+            </div>
+            <div class="formContainer">
+                <label for="description">Beskrivning</label>
+                <textarea name="description" id="description" placeholder="Ange beskrivning" required></textarea>
+            </div>
+            <div class="formContainer">
+                <label for="brand">Märke</label>
+                <input type="text" name="brand" id="brand" required maxlength="25" placeholder="Ange Märke">
+            </div>
+            <div class="formContainer">
+                <label for="img">Bild</label>
+                <input type="file" name="img" id="img" accept=".jpg, .png, .webp" required>
+            </div>
+            <div class="formContainer">
+                <label for="sku">SKU</label>
+                <input type="text" name="sku" id="sku" pattern="[A-Za-z]{3}[1-9]{3}" maxlength="6"
+                    placeholder="Ange SKU" required>
+            </div>
+            <div class="formContainer">
+                <label for="price">Pris</label>
+                <input type="number" name="price" id="price" placeholder="Ange pris i SEK" required>
+            </div>
+            <div class="formContainer">
+                <label for="date">Publiceringsdatum</label>
+                <input type="date" name="date" id="date" required>
+            </div>
+            <button type="submit" class="addButton">Lägg till</button>
+        </form>
+            <p class="error"></p>
+    </main>
+    <aside>
+        <a href="/admin/products">Produkter</a>
+    </aside>
+</body>
+
+</html>

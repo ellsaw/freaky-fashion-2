@@ -1,11 +1,195 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/output.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p class="text-3xl text-red-500">Welcome to <%= title %></p>
-  </body>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freaky Fashion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="icon/freakyfashion_icon.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <header>
+        <div class="upperHeader">
+            <a href="/"><img src="img/Freakyfashion.svg" alt="Freaky Fashion"></a>
+            <nav class="checkout-favorites">
+                <a href="#"><i class="bi bi-suit-heart"></i></a>
+                <a href="#"><i class="bi bi-house-fill"></i></a>
+                <a href="checkout.html"><i class="bi bi-bag"></i></a>
+            </nav>
+        </div>
+        <form action="https://httpbin.org/get" method="get" id="search" class="search_bar" target="_blank">
+            <button form="search" type="submit"><i class="bi bi-search"></i></button>
+            <input type="text" id="searchData" name="searchData" required maxlength="80" placeholder="Sök"
+                autocomplete="off">
+        </form>
+        <nav class="lower_nav">
+            <ul>
+                <li><a href="#">Nyheter</a></li>
+                <li><a href="#">Topplistan</a></li>
+                <li><a href="#">Rea</a></li>
+                <li><a href="#">Kampanjer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article class="hero">
+            <img src="img/hero.jpg" width="1621" height="1080" alt="">
+            <div class="heroHeader">
+                <h2>Gult är <s>fult</s><span class="freckle_face"> ICONIC</span></h2>
+                <p>Spana in nya Yellow Collection <i class="bi bi-arrow-down"></i></p>
+            </div>
+        </article>
+        <div class="articleContainer">
+
+            <% products.reverse();
+            for(let i = 0; i < products.length && i < 8; i++){ 
+                const product = products[i];
+                %>
+                <article class="article">
+                    <a href="/product-details.html">
+                        <div class="articleImg">
+                            <img src="<%= product.img %>" alt="<%= product.productName %>" loading="lazy" height="433" width="300">
+                            <div class="newItem">
+                                <p>Nyhet</p>
+                            </div>
+                        </div>
+                        <div class="productInfo">
+                            <div class="productInfoHead">
+                                <h2><%= product.productName %></h2>
+                                <p class="pris"><%= product.price %>SEK</p>
+                            </div>
+                            <p class="brand"><%= product.brand %></p>
+                        </div>
+                    </a>
+                    <button class="favoriteIcon" type="button"><i class="bi bi-suit-heart-fill"></i></button>
+                </article>
+            <% } %>
+        </div>
+        <div class="spotsContainer">
+            <a href="#">
+                <article class="spotItem">
+                    <img src="img/spots/winterspot.png" alt="" width="600" height="600" loading="lazy">
+                    <h2>Vinter</h2>
+                </article>
+            </a>
+            <a href="#">
+                <article class="spotItem">
+                    <img src="img/spots/sportspot.png" alt="" width="600" height="600" loading="lazy">
+                    <h2>Sport</h2>
+                </article>
+            </a>
+            <a href="#">
+                <article class="spotItem">
+                    <img src="img/spots/babyspot.png" alt="" width="600" height="600" loading="lazy">
+                    <h2>Baby</h2>
+                </article>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <ul class="benefitList">
+            <li><i class="bi bi-globe"></i>
+                <p>Gratis frakt och returer</p>
+            </li>
+            <li><i class="bi bi-airplane"></i>
+                <p>Expressfrakt</p>
+            </li>
+            <li><i class="bi bi-shield-shaded"></i>
+                <p>Säkra betalningar</p>
+            </li>
+            <li><i class="bi bi-emoji-smile"></i>
+                <p>Nya kollektioner varje månad</p>
+            </li>
+        </ul>
+        <div class="accordionContainer">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Shopping
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <a href="/">Vinterjackor</a>
+                            <a href="/">Pufferjackor</a>
+                            <a href="/">Kappor</a>
+                            <a href="/">Trenchcoats</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Mina Sidor
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <a href="/">Mina Ordrar</a>
+                            <a href="/">Mitt Konto</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Kundtjänst
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <a href="/">Returnpolicy</a>
+                            <a href="/">Integritetspolicy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="upperFooter">
+            <div class="footerListContainer">
+                <h2>Shopping</h2>
+                <ul>
+                    <li><a href="/">Vinterjackor</a></li>
+                    <li><a href="/">Pufferjackor</a></li>
+                    <li><a href="/">Kappor</a></li>
+                    <li><a href="/">Trenchcoats</a></li>
+                </ul>
+            </div>
+            <div class="footerListContainer">
+                <h2>Mina Sidor</h2>
+                <ul>
+                    <li><a href="/">Mina Ordrar</a></li>
+                    <li><a href="/">Mitt Konto</a></li>
+                </ul>
+            </div>
+            <div class="footerListContainer">
+                <h2>Kundtjänst</h2>
+                <ul>
+                    <li><a href="/">Returnpolicy</a></li>
+                    <li><a href="/">Integritetspolicy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="lowerFooter">
+            <p>Innehållet på denna webbplats är upphovsrättsskyddat och tillhör Freaky Fashion AB</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

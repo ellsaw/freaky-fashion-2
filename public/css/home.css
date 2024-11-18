@@ -1,0 +1,232 @@
+/* CSS Exklusiv för hemskärmen */
+
+.hero{
+    background-image: linear-gradient(#FFE02B, #F3796F);
+    display: flex;
+    flex-direction: column;
+}
+
+.hero img{
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 1rem;
+}
+
+.hero h2{
+    padding: 0 1rem 1rem 1rem;
+    font-size: 1.25em;
+    text-wrap: nowrap;
+}
+
+.hero .freckle_face{
+    color: #FFE02B;
+}
+
+.hero p{
+    padding: 0 1rem 1rem 1rem;
+    font-size: 1em;
+}
+
+.heroHeader p i{
+    position: relative;
+    animation: arrowbop 1s infinite;
+}
+
+@keyframes arrowbop {
+    0% {top: 0;}
+    50% {top: 5px;}
+    100% {top: 0;}
+}
+
+.articleContainer{
+    padding: 1.5rem;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: auto;
+    background-color: #f6df5b;
+}
+
+.articleContainer a{
+    width: 100%;
+    height: 100%;
+}
+
+.article{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.articleImg{
+    position: relative;
+    width: 100%;
+}
+
+.articleImg img{
+    width: 100%;
+    height: auto;
+}
+
+.favoriteIcon{
+    position: absolute;
+    height: 6rem;
+    width: 7rem;
+    font-size: 2em;
+    top: 1rem;
+    right: 0;
+    background-color: white;
+    text-align: center;
+    border: none;
+}
+
+.favoriteIcon i{
+    position: relative;
+    font-weight: 900;
+    top: 3px;
+}
+
+.favoriteIcon .bi-suit-heart-fill{
+    color: red;
+}
+
+.favoriteIcon:hover, .favoriteIcon:focus{
+    outline: none;
+}
+
+.favoriteIcon:hover .bi-suit-heart,
+.favoriteIcon:focus .bi-suit-heart {
+    color: red;
+}
+.newItem{
+    position: absolute;
+    left: 0;
+    bottom: 1rem;
+    text-align: center;
+    background-color: white;
+
+}
+
+.newItem p{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0;
+    font-size: 1em;
+    font-weight: 900;
+}
+
+.productInfo{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1em;
+    justify-content: center;
+}
+
+.productInfoHead{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.productInfoHead h2{
+    width: 60%;
+}
+
+.productInfoHead h2, .pris{
+    font-size: 1em;
+    font-weight: 450;
+    text-transform: uppercase;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.brand{
+    font-size: 0.75em;
+}
+
+.spotsContainer{
+    position: relative;
+    display: none;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.spotsContainer > *{
+    width: 30%;
+}
+
+.spotItem {
+    position: relative
+}
+
+.spotsContainer img{
+    width: 100%;
+    height: auto;
+}
+
+.spotsContainer h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 12px black;
+}
+
+@media (max-width: 400px){ /* Använder denna för att fixa problem med padding på låg upplösning */
+    .article{
+        padding: 1rem 0 1rem;
+    }
+    .productInfo{
+        padding: 0 1rem 0;
+    }
+
+}
+
+@media (min-width: 641px){
+    .articleContainer{
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Använder denna för att se till att grid elementen krymper i samma hastighet. Fungerar genom att låta elementen gå hela vägen ner till 0 ned minmax */
+    }
+    .favoriteIcon{
+        height: 5rem;
+        width: 6rem;
+    }
+}
+
+@media (min-width: 1025px){
+    .hero{
+        flex-direction: row-reverse;
+    }
+    .hero img{
+        width: 50%;
+    }
+
+    .heroHeader{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 3em;
+    }
+
+    .hero .freckle_face{
+        color: #F3796F;
+    }
+
+    .articleContainer{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .favoriteIcon{
+        height: 3rem;
+        width: 3.5rem;
+    }
+
+    .spotsContainer{
+        display: flex;
+    }
+}

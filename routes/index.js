@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const models = require("../models/models")
+const bufferToImg = require("../utils/bufferToImg")
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res, next) => {
+    try{
+        let rows = await models.getAllProducts()
+        rows.forEach(row => {
+            row.img = bufferToImg(row.img);
+        });
+        res.render('index', { products: rows });
+    }catch(err){
+        res.render("error", { error: err, message: err.message})
+    }
 });
 
 module.exports = router;

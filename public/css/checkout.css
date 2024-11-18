@@ -1,0 +1,171 @@
+/* Båda dessa är för att ta bort bootstraps css för fieldset */
+fieldset {
+    display: block;
+    padding: 0.35em 0.75em 0.625em;
+    border: 2px groove #151515a1;
+}
+
+legend {
+    float: none;
+    width: auto;
+}
+
+.checkout{
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem
+}
+
+main h2{
+    font-size: 2em;
+}
+
+.basketDesk thead, .basketDesk tbody{
+    border: 1px solid #151515;
+}
+
+.basketDesk thead{
+    background-color: #FFE02B;
+}
+
+.basketDesk td{
+    border-left: 1px solid #151515;
+    padding: 0.25em
+}
+
+.basketDesk{
+    display: none;
+    width: 100%;
+}
+
+.basketDesk table{
+    width: 100%;
+}
+
+
+.basketMobile{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.basketMobile .item{
+    border: 1px solid #151515;
+    padding: 2rem;
+}
+
+.basketMobile p, .basketMobile h3{
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.item > p{
+    color: #151515a1;
+    font-size: 0.75em;
+}
+
+.row1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.shippingInfo h3, .basketDesk h3, .basketMobile h3{
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.shippingInfo{
+    width: 100%;
+}
+
+.shippingInfo input{
+    padding-left: 0.25em;
+}
+
+.newsLetter label{
+    margin-right: 1rem;
+    line-height: 1;
+}
+
+.nameMail{
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr;
+}
+
+.fName input, .lName input, .email input, .street input, .city input{
+    width: 100%;
+    display: block;
+}
+
+
+.zip input{
+    width: 50%;
+    display: block;
+}
+
+form > *{
+    margin-bottom: 1rem;
+}
+
+label, legend, input{
+    font-size: 1em;
+}
+
+.buyButtonContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.buyButton{
+    width: 50%;
+    border: none;
+    background-color: #151515;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #151515;
+    padding: 1rem;
+}
+
+.buyButton:hover{
+    background-color: rgb(204, 204, 204);
+    color: #151515;
+}
+
+tbody :first-child td{
+    background-color: rgb(232, 232, 232);
+}
+
+@media (min-width: 641px){
+    .basketMobile{
+        display: none;
+    }
+
+    .basketDesk{
+        display: block;
+    }
+
+    .shippingInfo h3, .basketDesk h3, .basketMobile h3{
+        text-align: left;
+    }
+
+    .nameMail{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .zip input{
+        width: 30%;
+    }
+
+    .city input{
+        width: calc(50% - 0.5rem);
+    }
+
+}
