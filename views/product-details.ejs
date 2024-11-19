@@ -43,52 +43,43 @@
             <div class="descriptionContainer">
                 <h2><%= product.productName %></h2>
                 <p class="brand"><%= product.brand %></p>
-                <p class="description"><%= product.description %></p>
-                <p class="price"><%= product.price %></p>
+                <p class="description"><%- product.description %></p>
+                <p class="price"><%= product.price %> SEK</p>
                 <button class="addBasket" type="button">Lägg till i varukorg</button>
             </div>
         </article>
         <div id="carouselExample" class="carousel slide">
-            <h2>Liknande produkter</h2>
+            <h2>Shoppa Vidare</h2>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <a href="">
-                        <article class="carouselArticle car1">
-                            <img src="img/artiklar/art2.png" alt="">
+                <% slideShowProducts.forEach(product => { 
+                    if(slideShowProducts[0] === product){ %>
+                    <div class="carousel-item active">
+                    <a href="/products/<%= product.slug %>">
+                        <article class="carouselArticle carouselCard">
+                            <img src="<%= product.img %>" alt="<%= product.productName %>">
                             <div class="carouselDescription">
-                                <h3>Stickade Vida Byxor</h3>
-                                <p class="pris">249SEK</p>
-                                <p class="brand">FreakyOriginals</p>
+                                <h3><%= product.productName %></h3>
+                                <p class="brand"><%= product.brand %></p>
+                                <p class="pris"><%= product.price %> SEK</p>
                             </div>
                         </article>
                     </a>
                 </div>
-
-                <div class="carousel-item">
-                    <a href="">
-                        <article class="carouselArticle car2">
-                            <img src="img/artiklar/art3.png" alt="">
+                <% }else{ %>
+                    <div class="carousel-item">
+                    <a href="/products/<%= product.slug %>">
+                        <article class="carouselArticle carouselCard">
+                            <img src="<%= product.img %>" alt="<%= product.productName %>">
                             <div class="carouselDescription">
-                                <h3>Långärmad Mesh Topp</h3>
-                                <p class="pris">199SEK</p>
-                                <p class="brand">FreakyOriginals</p>
+                                <h3><%= product.productName %></h3>
+                                <p class="brand"><%= product.brand %></p>
+                                <p class="pris"><%= product.price %> SEK</p>
                             </div>
                         </article>
                     </a>
                 </div>
-                <div class="carousel-item">
-                    <a href="">
-                        <article class="carouselArticle car3">
-                            <img src="img/artiklar/art4.png" alt="">
-                            <div class="carouselDescription">
-                                <h3>Stickad Rutig Kjol</h3>
-                                <p class="pris">249SEK</p>
-                                <p class="brand">FreakyOriginals</p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-            </div>
+                <% }
+            }) %>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>

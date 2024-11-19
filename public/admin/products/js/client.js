@@ -7,7 +7,7 @@ loadProducts.addEventListener("click", (event) => {
   fetch("http://localhost:3000/admin/products/fetch")
     .then((response) => response.json())
     .then((data) => {
-      const products = data.products;
+      const products = data.products.reverse();
 
       products.forEach((product) => {
         const tr = document.createElement("tr");

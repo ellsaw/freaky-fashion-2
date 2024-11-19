@@ -73,16 +73,29 @@
     text-transform: uppercase;
 }
 
-.car1{
-    background-image: linear-gradient(to right, #baa866,#d89217);
+.carouselCard{
+    background-image: linear-gradient(to right, #E89005,#E87B05);
 }
-
-.car2{
-    background-image: linear-gradient(to right, #d89217, #dbad5d);
+.carousel-item:nth-of-type(2) .carouselCard{
+    background-image: linear-gradient(to right, #E87B05,#E76605);
 }
-
-.car3{
-    background-image: linear-gradient(to right, #dbad5d,#baa866);
+.carousel-item:nth-of-type(3) .carouselCard{
+    background-image: linear-gradient(to right, #E76605,#E75105);
+}
+.carousel-item:nth-of-type(4) .carouselCard{
+    background-image: linear-gradient(to right, #E75105,#E63B04);
+}
+.carousel-item:nth-of-type(5) .carouselCard{
+    background-image: linear-gradient(to right, #E63B04,#E75105);
+}
+.carousel-item:nth-of-type(6) .carouselCard{
+    background-image: linear-gradient(to right, #E75105,#E76605);
+}
+.carousel-item:nth-of-type(7) .carouselCard{
+    background-image: linear-gradient(to right, #E76605,#E87B05);
+}
+.carousel-item:nth-of-type(8) .carouselCard{
+    background-image: linear-gradient(to right, #E87B05,#E89005);
 }
 
 
