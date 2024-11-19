@@ -3,10 +3,9 @@ const router = express.Router();
 const models = require("../models/models")
 const bufferToImg = require("../utils/bufferToImg")
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:slug", async (req, res, next) => {
     try{
-        const rows = await models.getSingleProduct(req.params.id)
-        const product = rows[0];
+        const product = await models.getSingleProduct(req.params.slug)
         product.img = bufferToImg(product.img)
         res.render('product-details', { product })
     }catch(err) {
