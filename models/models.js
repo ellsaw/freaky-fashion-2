@@ -1,4 +1,7 @@
+const { query } = require("express");
 const db = require("../db/db");
+const bufferToImg = require("../utils/bufferToImg");
+const Fuse = require('fuse.js')
 let sql;
 
 const addProduct = async (
@@ -41,6 +44,36 @@ const addProduct = async (
   });
 };
 
+const getProducts = (amount) => {
+  return new Promise((resolve, reject) => {
+    sql = `SELECT 
+        id, 
+        productName, 
+        description,
+        brand, 
+        sku, 
+        price,
+        img, 
+        date,
+        slug 
+        FROM products
+        ORDER BY id DESC
+        LIMIT ?;`;
+
+    db.all(sql, [amount], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        reject(err);
+      } else {
+        rows.forEach((row) => {
+          row.img = bufferToImg(row.img);
+        });
+        resolve(rows);
+      }
+    });
+  });
+};
+
 const getAllProducts = () => {
   return new Promise((resolve, reject) => {
     sql = `SELECT 
@@ -53,13 +86,17 @@ const getAllProducts = () => {
         img, 
         date,
         slug 
-        FROM products;`;
+        FROM products
+        ORDER BY id DESC;`;
 
     db.all(sql, [], (err, rows) => {
       if (err) {
         console.error(err.message);
         reject(err);
       } else {
+        rows.forEach((row) => {
+          row.img = bufferToImg(row.img);
+        });
         resolve(rows);
       }
     });
@@ -83,9 +120,10 @@ const getSingleProduct = (slug) => {
 
     db.get(sql, [slug], (err, row) => {
       if (err) {
-        console.log(err.message);
+        console.error(err.message);
         reject(err);
       } else {
+        row.img = bufferToImg(row.img);
         resolve(row);
       }
     });
@@ -112,6 +150,9 @@ const getRandomProducts = (amount) => {
         console.error(err.message);
         reject(err);
       } else {
+        rows.forEach((row) => {
+          row.img = bufferToImg(row.img);
+        });
         resolve(rows);
       }
     });
@@ -132,6 +173,71 @@ const deleteProduct = (id) => {
     });
   });
 };
+
+const searchResults = (query) => {
+  return new Promise((resolve, reject) => {
+    sql = `
+    SELECT
+    id,
+    productName,
+    brand
+    FROM products
+    `
+    db.all(sql, [], (err, rows) => {
+      if (err){
+        console.error(err.message)
+        reject(err)
+      }else{
+        const fuseOptions = {
+          keys: ['id', 'productName', 'brand'],
+          threshold: 0.3
+        }
+
+        const fuse = new Fuse(rows, fuseOptions)
+        const fuseResults = fuse.search(query).map(result => result.item)
+
+        const searchPromises = fuseResults.map(fuseResult => {
+          return new Promise((resolve, reject) => {
+            const sql = `
+              SELECT 
+                id, 
+                productName, 
+                description,
+                brand, 
+                sku, 
+                price,
+                img, 
+                date,
+                slug 
+              FROM products
+              WHERE id = ?
+              ORDER BY id DESC;
+            `;
+
+            db.get(sql, fuseResult.id, (err, row) => {
+              if (err) {
+                return reject(err);
+              }
+              resolve(row);
+            });
+          });
+        });
+
+        
+        Promise.all(searchPromises)
+          .then(searchResults => {
+            searchResults.forEach(searchResult => {
+              searchResult.img = bufferToImg(searchResult.img)
+            });
+            resolve(searchResults);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      }
+    })
+  })
+}
 
 function formatLineBreaks(text) {
   return text.replace(/(\r\n|\n)/g, "<br>");
@@ -180,7 +286,7 @@ async function slugify(text, brand) {
     }
     return slug;
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
     return undefined;
   }
 }
@@ -188,7 +294,9 @@ async function slugify(text, brand) {
 module.exports = {
   addProduct,
   deleteProduct,
+  getProducts,
   getAllProducts,
   getSingleProduct,
   getRandomProducts,
+  searchResults,
 };

@@ -10,6 +10,7 @@
     <link rel="icon" href="icon/freakyfashion_icon.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/search.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <a href="#"><i class="bi bi-bag-fill"></i></a>
             </nav>
         </div>
-        <form action="https://httpbin.org/get" method="get" id="search" class="search_bar" target="_blank">
+        <form id="search" class="search_bar">
             <button form="search" type="submit"><i class="bi bi-search"></i></button>
             <input type="text" id="searchData" name="searchData" required maxlength="80" placeholder="Sök"
                 autocomplete="off">

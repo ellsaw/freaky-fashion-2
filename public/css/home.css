@@ -142,6 +142,11 @@
     margin-block-start: 0;
     margin-block-end: 0;
 }
+
+.pris{
+    line-height: 1;
+}
+
 .brand{
     font-size: 0.75em;
 }

@@ -10,6 +10,7 @@
     <link rel="icon" href="icon/freakyfashion_icon.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/home.css">
+    <script src="js/search.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 <a href="checkout.html"><i class="bi bi-bag"></i></a>
             </nav>
         </div>
-        <form action="https://httpbin.org/get" method="get" id="search" class="search_bar" target="_blank">
+        <form id="search" class="search_bar">
             <button form="search" type="submit"><i class="bi bi-search"></i></button>
             <input type="text" id="searchData" name="searchData" required maxlength="80" placeholder="Sök"
                 autocomplete="off">
@@ -45,18 +46,21 @@
             </div>
         </article>
         <div class="articleContainer">
-
-            <% products.reverse();
-            for(let i = 0; i < products.length && i < 8; i++){ 
-                const product = products[i];
+            <% 
+            const sevenDays = 7 * 24 * 60 * 60 * 1000;
+            products.forEach(product => {
+                const today = new Date();
+                const productDate = new Date(product.date);
                 %>
                 <article class="article">
                     <a href="/products/<%= product.slug %>">
                         <div class="articleImg">
                             <img src="<%= product.img %>" alt="<%= product.productName %>" loading="lazy" height="433" width="300">
+                            <% if(today - productDate < sevenDays) {%>
                             <div class="newItem">
                                 <p>Nyhet</p>
                             </div>
+                            <% } %>
                         </div>
                         <div class="productInfo">
                             <div class="productInfoHead">
@@ -68,7 +72,7 @@
                     </a>
                     <button class="favoriteIcon" type="button"><i class="bi bi-suit-heart-fill"></i></button>
                 </article>
-            <% } %>
+            <% }); %>
         </div>
         <div class="spotsContainer">
             <a href="#">
